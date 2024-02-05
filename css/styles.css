@@ -1,0 +1,22 @@
+body{
+    background-color: #BB8EA6;
+}
+main{
+    background-color: #FFFFFF;
+    color:#BB8EA6 ;
+    width: 70%;
+    margin:10% auto;
+}
+header{
+    color: #A06484;
+}
+section{
+    color: #BB8EA6;
+}
+input[type="button"]{
+    background-color: #FF9292;
+    color: white;
+    padding: 1em 3em;
+    border-radius: 10px;
+    border: none;
+}
