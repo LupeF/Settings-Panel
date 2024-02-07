@@ -1,22 +1,68 @@
 body{
     background-color: #BB8EA6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 main{
     background-color: #FFFFFF;
     color:#BB8EA6 ;
-    width: 70%;
-    margin:10% auto;
+    width: 50%;
+    border-radius: 20px;
+    padding: 1.5em;
+    box-shadow: 0 0 50px  black;
 }
 header{
     color: #A06484;
 }
 section{
     color: #BB8EA6;
+    margin: auto;
+}
+.flex{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.content{
+    width: 60%;
+}
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    position: relative;
+    background-color: lightgray;
+    color: white;
+    height: 40px;
+    width: 90px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: background .5s;
+    outline: none;
+}
+input[type="checkbox"]::after{
+    content: "";
+    position:absolute;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    top: 5px;
+    left: 10px;
+}
+input[type="checkbox"]:checked{
+    background-color:#BB8EA6; 
+}
+input[type="checkbox"]:checked::after{
+    left: 50%;
 }
 input[type="button"]{
     background-color: #FF9292;
     color: white;
-    padding: 1em 3em;
+    height: 40px;
+    width: 100px;
     border-radius: 10px;
     border: none;
 }
