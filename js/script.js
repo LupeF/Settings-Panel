@@ -1,7 +1,10 @@
 let syncButton = document.getElementById("sync-preferences");
 let onlineButton = document.getElementById("online-visibility");
 let privacyButton = document.getElementById("privacy-control");
+let darkButton = document.getElementById("dark-control");
+let main = document.querySelector('main');
 let deleteButton = document.getElementById("sync-preferences");
+
 
 //* adds or removes local storage on click
 syncButton.onclick = (e)=>{
@@ -26,8 +29,17 @@ privacyButton.onclick = (e)=>{
         localStorage.removeItem('privacySettings');
     }
 }
+darkButton.onclick = (e)=>{
+    if(darkButton.checked){
+        localStorage.setItem('darkSettings', darkButton.value);
+        main.style.backgroundColor= 'black';
+    } else{
+        localStorage.removeItem('darkSettings');
+        main.style.backgroundColor= '#FFFFFF';
+    }
+}
 
-//* saves the information when re-freshing the browseer.
+//* Function will save the information using local Storage when re-freshing the browser.
 let StorageSettings = (e)=>{
     //! using getItem method
     if(localStorage.getItem('syncSettings') === 'on'){
@@ -40,7 +52,11 @@ let StorageSettings = (e)=>{
     if(localStorage.privacySettings === 'on'){
         privacyButton.checked = true;
     }
+    if(localStorage.darkSettings === 'on'){
+        darkButton.checked = true;
+    }
 }
+
 
 //* calls the function.
 StorageSettings();
