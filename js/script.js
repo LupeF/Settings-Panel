@@ -2,8 +2,13 @@ let syncButton = document.getElementById("sync-preferences");
 let onlineButton = document.getElementById("online-visibility");
 let privacyButton = document.getElementById("privacy-control");
 let darkButton = document.getElementById("dark-control");
+let deleteBtn = document.getElementById("delete-btn");
 let main = document.querySelector('main');
 let deleteButton = document.getElementById("sync-preferences");
+let modalWindow = document.getElementById('modal-window');
+let quitInput = document.getElementById('quit-input');
+let oKBtn = document.getElementById('ok-btn');
+let cancelBtn = document.getElementById('cancel-btn');
 
 
 //* adds or removes local storage on click
@@ -58,5 +63,24 @@ let StorageSettings = (e)=>{
 }
 
 
+deleteBtn.addEventListener('click', (e)=>{
+    modalWindow.innerHTML =`
+    <div class="modal-cont">
+        <h2>Are You Sure you want to Delete Account?</h2>
+        <input type="text" id="quit-input" placeholder="Type Delete" name="Delete input">
+        <div class="cancel-btn-cont">
+            <button id="ok-btn" type"button">OK</button>
+            <button id="cancel-btn" type="button">Cancel</button>
+        </div>
+    </div>
+    `
+});
+
+oKBtn.addEventListener('click',(e)=>{
+    let typedAnswer = quitInput.value;
+    if(typedAnswer === "DELETE".toLocaleLowerCase()){
+        modalWindow.style.display="none";
+    }
+})
 //* calls the function.
 StorageSettings();

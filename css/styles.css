@@ -4,6 +4,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative;
 }
 main{
     background-color: #FFFFFF;
@@ -12,6 +13,8 @@ main{
     border-radius: 20px;
     padding: 1.5em;
     box-shadow: 0 0 50px  black;
+    position: absolute;
+    
 }
 header{
     color: #A06484;
@@ -19,6 +22,39 @@ header{
 section{
     color: #BB8EA6;
     margin: auto;
+}
+
+.modal-cont{
+    position: absolute;
+    top: 80px;
+    right: 80px;
+    bottom: 80px;
+    left: 80px;
+    border-radius: 5px;
+    background-color: black;
+    transition: all .4s ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+}
+.cancel-btn-cont{
+    display: flex;
+    justify-content: flex-end;
+    width:25%;
+    padding: 1em;
+    /* margin-left: 4em; */
+
+}
+.cancel-btn-cont button {
+    margin-left: .7em;
+    flex-grow: 1;
+    font-size: larger;
+}
+.modal-cont input{
+    font-size: xx-large;
+    outline: none;
 }
 .flex{
     display: flex;
