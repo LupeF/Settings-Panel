@@ -6,10 +6,6 @@ let deleteBtn = document.getElementById("delete-btn");
 let main = document.querySelector('main');
 let deleteButton = document.getElementById("sync-preferences");
 let modalWindow = document.getElementById('modal-window');
-let quitInput = document.getElementById('quit-input');
-let oKBtn = document.getElementById('ok-btn');
-let cancelBtn = document.getElementById('cancel-btn');
-
 
 //* adds or removes local storage on click
 syncButton.onclick = (e)=>{
@@ -64,23 +60,55 @@ let StorageSettings = (e)=>{
 
 
 deleteBtn.addEventListener('click', (e)=>{
-    modalWindow.innerHTML =`
-    <div class="modal-cont">
-        <h2>Are You Sure you want to Delete Account?</h2>
-        <input type="text" id="quit-input" placeholder="Type Delete" name="Delete input">
-        <div class="cancel-btn-cont">
-            <button id="ok-btn" type"button">OK</button>
-            <button id="cancel-btn" type="button">Cancel</button>
+    if(modalWindow.style.display= "none"){
+        modalWindow.style.display = "block";
+        modalWindow.innerHTML =`
+        <div class="modal-cont">
+            <h2>Are You Sure you want to Delete Account?</h2>
+            <input type="text" id="quit-input" placeholder="Type Delete" name="Delete input">
+            <div class="cancel-btn-cont">
+                <button id="ok-btn" type"button">OK</button>
+                <button id="cancel-btn" type="button">Cancel</button>
+            </div>
         </div>
-    </div>
-    `
-});
-
-oKBtn.addEventListener('click',(e)=>{
-    let typedAnswer = quitInput.value;
-    if(typedAnswer === "DELETE".toLocaleLowerCase()){
-        modalWindow.style.display="none";
+    `;
     }
+   
+    let quitInput = document.getElementById('quit-input');
+    let oKBtn = document.getElementById('ok-btn');
+    let cancelBtn = document.getElementById('cancel-btn');
+    oKBtn.addEventListener('click',(e)=>{
+        let typedAnswer = quitInput.value.toLowerCase();
+        if(typedAnswer === "delete"){
+            modalWindow.innerHTML=`
+            <div class="modal-two">
+                <header>
+                    <div class="closing-container">
+                        <button class="close-btn">
+                        <div class="close">Close</div>
+                        </button>    
+                    </div>
+                </header>
+                <div class="body-container">
+                    <div>
+                        <h2>Success!</h2>
+                    </div>
+                    <div>
+                        <p>Create an account?</p>
+                    </div>
+                </div>   
+            </div>
+        `;
+        //* calls the function.
+        StorageSettings();
+        } else if(typedAnswer === ""){
+            alert("Type Delete");
+        }
+    })
+    cancelBtn.addEventListener('click',(e)=>{
+        quitInput.textContent = "";
+        modalWindow.style.display="none";
+    })
 })
-//* calls the function.
-StorageSettings();
+
+
