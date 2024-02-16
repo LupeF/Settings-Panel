@@ -41,7 +41,7 @@ darkButton.onclick = (e)=>{
 }
 
 //* Function will save the information using local Storage when re-freshing the browser.
-let StorageSettings = (e)=>{
+let SavedSettings = (e)=>{
     //! using getItem method
     if(localStorage.getItem('syncSettings') === 'on'){
         syncButton.checked = true;
@@ -49,16 +49,38 @@ let StorageSettings = (e)=>{
     //! using Dot notation using the key value stored
     if(localStorage.onlineSettings === 'on'){
         onlineButton.checked = true;
-    }
+    } 
     if(localStorage.privacySettings === 'on'){
         privacyButton.checked = true;
-    }
+    } 
     if(localStorage.darkSettings === 'on'){
         darkButton.checked = true;
+    } 
+}
+// Function will reset and erase local storage
+let deleteSettings = (e)=>{
+    //! using getItem method
+    if(localStorage.getItem('syncSettings') === 'on'){
+        syncButton.checked = false;
+        localStorage.removeItem('syncSettings');
     }
+    //! using Dot notation using the key value stored
+    if(localStorage.onlineSettings === 'on'){
+        onlineButton.checked = false;
+        localStorage.removeItem('onlineSettings');
+    } 
+    if(localStorage.privacySettings === 'on'){
+        privacyButton.checked = false;
+        localStorage.removeItem('privacySettings')
+    } 
+    if(localStorage.darkSettings === 'on'){
+        darkButton.checked = false;
+        localStorage.removeItem('darkSettings')
+    } 
 }
 
-
+SavedSettings();
+// inserts html dynamically when clicked on delete button
 deleteBtn.addEventListener('click', (e)=>{
     if(modalWindow.style.display= "none"){
         modalWindow.style.display = "block";
@@ -73,38 +95,39 @@ deleteBtn.addEventListener('click', (e)=>{
         </div>
     `;
     }
-   
     let quitInput = document.getElementById('quit-input');
     let oKBtn = document.getElementById('ok-btn');
     let cancelBtn = document.getElementById('cancel-btn');
+    // if the user types delete, another modal will insert in the browser
     oKBtn.addEventListener('click',(e)=>{
         let typedAnswer = quitInput.value.toLowerCase();
         if(typedAnswer === "delete"){
             modalWindow.innerHTML=`
             <div class="modal-two">
-                <header>
-                    <div class="closing-container">
+                    <div class="close-btn-container">
                         <button class="close-btn">
                         <div class="close">Close</div>
                         </button>    
                     </div>
-                </header>
                 <div class="body-container">
-                    <div>
-                        <h2>Success!</h2>
-                    </div>
-                    <div>
-                        <p>Create an account?</p>
+                    <div class="content-cont">
+                        <h1 class="protest-riot-regular"> Success! </h1>
                     </div>
                 </div>   
             </div>
         `;
-        //* calls the function.
-        StorageSettings();
+        deleteSettings();
         } else if(typedAnswer === ""){
-            alert("Type Delete");
-        }
+            alert("Type Delete"); //! alert if user leaves input blank
+        };
+        let modalTwo = document.querySelector('.modal-two');
+        let closeModalBtn = document.querySelector('.close-btn-container');
+        // hides modal window
+        closeModalBtn.addEventListener('click', (e)=>{
+            modalTwo.style.display="none";
+        })  
     })
+    
     cancelBtn.addEventListener('click',(e)=>{
         quitInput.textContent = "";
         modalWindow.style.display="none";

@@ -115,7 +115,9 @@ input[type="button"]{
     border-radius: 25px;
 
 }
-
+/* ============================= */
+/* Second Modal window settings */
+/* =========================== */
 .modal-two{
     position: absolute;
     top: 80px;
@@ -123,15 +125,16 @@ input[type="button"]{
     bottom: 80px;
     left: 80px;
     border-radius: 10px;
-    background-color: purple;
+    background-image: url('../images/patternpad.png');
     transition: all .4s ease-in;
 }
-.closing-container{
+.close-btn-container{
     display: flex;
     justify-content: flex-end;
     margin: 1em;
-    
-
+}
+.close-btn:hover{
+    background-color: red;
 }
 .close-btn{
     position: relative;
@@ -139,6 +142,7 @@ input[type="button"]{
     width: 4em;
     background-color: black;
     border: none;
+    transition: background .4s ease-in;
 }
 .close-btn::before{
     content: "";
@@ -156,6 +160,16 @@ input[type="button"]{
     width: 70%;
     transform: translate(-20px, -10px) rotate(135deg);
 }
+.close{
+    position: relative;
+    background-color: black;
+    color: white;
+    opacity: 0;
+}
+.close:hover{
+    transform: translateY(-35px);
+    opacity: 1;
+}
 
 .body-container{
     display: flex;
@@ -164,3 +178,20 @@ input[type="button"]{
     height: 60%;
     flex-direction:column;
 }
+.content-cont{
+    background-color: aliceblue;
+    padding: 5em;
+    border-radius: 20px; 
+} 
+.content-cont h1 {
+    font-size: xx-larg;
+}
+
+.protest-riot-regular {
+    font-family: "Protest Riot", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 80px;
+  }
+  
+     
